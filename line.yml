@@ -1,0 +1,50 @@
+# ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁
+# Assembly Line: video-transcription
+# ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁ ☁
+# See docs at http://cloudfactory.com/developers/
+# See example lines at http://cloudfactory.com/developers/lines/
+# Run `cf login` OR manually specify your API key below (See http://cloudfactory.com/developers/resources/account.html)
+# api_key: fill_in_your_api_key #(optional)
+title: youversion_audio_versification
+public: false # Make your line a public line if true (http://cloudfactory.com/developers/resources/line.html#public)
+#api_key: 5f27b0c87532ff8389fd4955b88b6336c579b529 #0cff92505889e9530baebda027459e1ce073e9dd
+description: A sample line generated via CLI to use both standard and custom form for video transcription.
+department: Data Processing # Department to build line in (See http://cloudfactory.com/developers/resources/department.html)
+
+# Line Input Formats (see http://cloudfactory.com/developers/resources/input_format.html)
+input_formats:
+  - audio_url: url
+    required: true
+    valid_type: url
+  - text_url: url
+    required: true
+    valid_type: url
+  - transaltion: text
+    required: true
+    valid_type: url
+
+  # Sample Station #4: Human Worker
+  - station:
+      station_index: 1
+      station_type: work
+      worker:
+        worker_type: human
+        num_workers: 1
+        reward: 3
+      custom_task_form:
+        form_title: Insert timestamp in the following audio text.
+        instruction: Play the audio and fill in the text box with the exact timestamp of the audio.
+        html: station1.html
+
+  # Sample Station #4: Human Worker
+  - station:
+      station_index: 2
+      station_type: improve
+      worker:
+        worker_type: human
+        num_workers: 1
+        reward: 3
+      custom_task_form:
+        form_title: Fix the timestamp error in the given textfield.
+        instruction: Play the audio and correct the timestamp if it were incorrectly filled in.
+        html: station2.html
